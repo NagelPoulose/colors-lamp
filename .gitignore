@@ -1,0 +1,9 @@
+
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+db_connect.php
+db_config.php
+.env
