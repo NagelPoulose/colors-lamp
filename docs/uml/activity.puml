@@ -1,0 +1,32 @@
+@startuml
+start
+
+:Open index.html;
+:Enter login + password;
+:Click "Do It";
+:Send login request to Login.php;
+:POST /Login.php;
+
+if (Valid credentials?) then (yes)
+  :Redirect to color.html;
+else (no)
+  :Show login error;
+  stop
+endif
+
+repeat
+  if (Choose action) then (Search)
+    :Read searchText;
+    :Send search request to SearchColors.php;
+    :Display matching colors;
+  else (Add)
+    :Read colorText;
+    :Send add request to AddColor.php;
+    :Show add confirmation;
+  endif
+repeat while (Continue?) is (yes)
+
+:Click "Log Out";
+:Redirect to index.html;
+stop
+@enduml

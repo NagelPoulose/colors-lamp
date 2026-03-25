@@ -1,0 +1,45 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class "code.js" as FrontendJS <<control>> {
+  +doLogin()
+  +searchColor()
+  +addColor()
+  +doLogout()
+}
+
+class "Login.php" as LoginAPI <<control>> {
+  +login(login,password)
+}
+
+class "SearchColors.php" as SearchAPI <<control>> {
+  +search(search,userId)
+}
+
+class "AddColor.php" as AddAPI <<control>> {
+  +add(color,userId)
+}
+
+class "Users" as UsersTable <<entity>> {
+  +ID : int
+  +firstName : varchar
+  +lastName : varchar
+  +Login : varchar
+  +Password : varchar
+}
+
+class "Colors" as ColorsTable <<entity>> {
+  +ID : int
+  +UserId : int
+  +Name : varchar
+}
+
+UsersTable "1" -- "0..*" ColorsTable : owns >
+FrontendJS --> LoginAPI : login
+FrontendJS --> SearchAPI : search
+FrontendJS --> AddAPI : add
+LoginAPI --> UsersTable
+SearchAPI --> ColorsTable
+AddAPI --> ColorsTable
+
+@enduml
