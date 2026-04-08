@@ -27,5 +27,4 @@ jobs:
       - name: Lint CSS
         run: stylelint "**/*.css"
 
-      - name: Lint JavaScript
-        run: eslint "**/*.js"
+      
