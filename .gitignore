@@ -7,3 +7,5 @@ Thumbs.db
 db_connect.php
 db_config.php
 .env
+
+node_modules/

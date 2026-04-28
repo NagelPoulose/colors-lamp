@@ -111,9 +111,12 @@ function doLogout()
 function addColor()
 {
 	let newColor = document.getElementById("colorText").value;
+	if (typeof window !== "undefined" && window.colorsUtil) {
+		newColor = window.colorsUtil.trimColorName(newColor);
+	}
 	document.getElementById("colorAddResult").innerHTML = "";
 
-	let tmp = {color:newColor,userId,userId};
+	let tmp = { color: newColor, userId: userId };
 	let jsonPayload = JSON.stringify( tmp );
 
 	let url = urlBase + '/AddColor.' + extension;
